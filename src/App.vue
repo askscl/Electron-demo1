@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const count = ref(0)
+import Hello from './components/Hello.vue';
+
 </script>
 
 <template>
-  <div>我是一个vue项目{{ count }}</div>
-  <button @click="count++">点击</button>
+  <Hello />
 </template>
 
 <style scoped>
