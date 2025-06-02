@@ -6,8 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue"
-const {contextBridge} = require('electron')
+import { ref } from "vue"
 
 const count = ref(0)
 

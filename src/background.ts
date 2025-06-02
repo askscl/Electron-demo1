@@ -5,13 +5,13 @@ app.whenReady().then(async () => {
     const win = await new BrowserWindow({
         width: 800,
         height: 600,
+        // frame: false, // 隐藏窗口边框
         icon:"favicon.ico", // 设置窗口图标--无效
         // 配置窗口的WebPreferences选项，用于控制渲染进程的行为
         webPreferences: {
             nodeIntegration: true, // 启用Node.js集成
             contextIsolation: false, // 禁用上下文隔离
             webSecurity: false, // 禁用web安全策略
-            contextIsolation: false
         }
     })
 
