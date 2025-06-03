@@ -1,5 +1,8 @@
 <template>
-
+    <h2 id="123">今天，天气晴！☀️</h2>
+    <div>
+        <input type="text" placeholder="请输入内容" />
+    </div>
     <div>
         <button @btn_minimize="btn_minimize">最小化</button>
         <button @btn_maximize="btn_maximize">最大化</button>

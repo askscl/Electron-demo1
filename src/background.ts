@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Menu } from 'electron'
 
 // 等待Electron应用就绪后创建BrowserWindow窗口
 app.whenReady().then(async () => {
@@ -7,6 +7,7 @@ app.whenReady().then(async () => {
         height: 600,
         // frame: false, // 隐藏窗口边框
         icon:"favicon.ico", // 设置窗口图标--无效
+        title: "天气", // 设置窗口标题
         // 配置窗口的WebPreferences选项，用于控制渲染进程的行为
         webPreferences: {
             nodeIntegration: true, // 启用Node.js集成
@@ -17,6 +18,79 @@ app.whenReady().then(async () => {
 
     // 打开开发者工具
     // win.webContents.openDevTools()
+
+    // 创建一个菜单
+    const template = [
+        {
+            label: '文件',
+            submenu: [
+                {
+                    label: '退出',
+                    click: () => {
+                        app.quit()
+                    }
+                }
+            ]
+        }, {
+            label: '编辑',
+            submenu: [
+                {
+                    label: '复制',
+                    role: 'copy'
+                },
+                {
+                    label: '粘贴',
+                    role: 'paste'
+                }, {
+                    type: 'separator'
+                }, {
+                    label: '全选',
+                    role: 'selectall'
+                }
+            ]
+        }, {
+            label: '视图',
+            submenu: [
+                {
+                    label: '刷新',
+                    role: 'reload'
+                }, {
+                    label: '强制刷新',
+                    role: 'forcereload'
+                }, {
+                    label: '开发者工具',
+                }
+            ]
+        }, {
+            label: '类型',
+            submenu: [
+                {
+                    label: '类型2',
+                    type: 'checkbox',
+                }, {
+                    label: '类型2',
+                    type: 'checkbox',
+                }, {
+                    label: '类型3',
+                    type: 'checkbox',
+                },{
+                    type: 'separator'
+                },{
+                    label: '单选1',
+                    type: 'radio',
+                },{
+                    label: '单选2',
+                    type: 'radio',
+                },{
+                    label: '单选3',
+                    type: 'radio',
+                }
+            ]
+        }
+    ]
+    const menu = Menu.buildFromTemplate(template)
+    Menu.setApplicationMenu(menu)
+
 
     // 根据命令行参数加载URL或本地文件
     if (process.argv[2]) {
