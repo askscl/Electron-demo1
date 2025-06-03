@@ -32,7 +32,7 @@ app.whenReady().then(async () => {
                 }
             ]
         }, {
-            label: '编辑',
+            label: '编辑角色',
             submenu: [
                 {
                     label: '复制',
