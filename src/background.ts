@@ -59,6 +59,7 @@ app.whenReady().then(async () => {
                     role: 'forcereload'
                 }, {
                     label: '开发者工具',
+                    role: 'toggledevtools'
                 }
             ]
         }, {
@@ -84,6 +85,17 @@ app.whenReady().then(async () => {
                 },{
                     label: '单选3',
                     type: 'radio',
+                }
+            ]
+        },{
+            label: '其它',
+            submenu: [
+                {
+                    label: '打开',
+                    accelerate: 'CmdOrCtrl+O',
+                    click: () => {
+                        console.log('打开')
+                    }
                 }
             ]
         }
