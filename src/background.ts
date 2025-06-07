@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, ipcMain } from 'electron'
 
 // 等待Electron应用就绪后创建BrowserWindow窗口
 app.whenReady().then(async () => {
@@ -20,7 +20,7 @@ app.whenReady().then(async () => {
     // win.webContents.openDevTools()
 
     // 创建一个菜单
-    const template = [
+    const menuTemplate = [
         {
             label: '文件',
             submenu: [
@@ -98,9 +98,14 @@ app.whenReady().then(async () => {
                     }
                 }
             ]
+        }, {
+            label: '通信',
+            click: () => {
+                BrowserWindow.getFocusedWindow()?.webContents.send('mtr', '主进程发送消息')
+            }
         }
     ]
-    const menu = Menu.buildFromTemplate(template)
+    const menu = Menu.buildFromTemplate(menuTemplate)
     Menu.setApplicationMenu(menu)
 
 
@@ -110,4 +115,18 @@ app.whenReady().then(async () => {
     } else {
         win.loadFile('index.html') //生产环境
     }
+
+    // 通信测试
+
+    // 异步通信
+    ipcMain.on('rtm', (event, data) => {
+        console.log(data)
+        event.sender.send('mtr', '后台收到消息')
+    })
+
+    // 同步通信
+    ipcMain.on('rtm_sync', (event, data) => {
+        console.log(data)
+        event.returnValue = '后台收到消息2'
+    })
 })
