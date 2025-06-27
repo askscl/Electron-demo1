@@ -14,6 +14,7 @@ app.whenReady().then(async () => {
             nodeIntegration: true, // 启用Node.js集成
             contextIsolation: false, // 禁用上下文隔离
             webSecurity: false, // 禁用web安全策略
+            sandbox: false, // 禁用沙箱
         }
     })
 
