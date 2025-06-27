@@ -1,4 +1,5 @@
-import { app, BrowserWindow, Menu, ipcMain } from 'electron'
+import { log } from 'console';
+import { app, BrowserWindow, Menu, ipcMain, globalShortcut } from 'electron'
 
 // 等待Electron应用就绪后创建BrowserWindow窗口
 app.whenReady().then(async () => {
@@ -150,4 +151,25 @@ app.whenReady().then(async () => {
         })
         new_win.loadFile('list.html')  //新窗口显示不出内容？
     })
+
+    // 注册快捷键star 
+        const gsc = globalShortcut.register('ctrl+Q', () => {
+            console.log('ctrl+Q')
+        })
+
+        if (!gsc) {
+            console.log('注册快捷键失败')
+        }
+
+        console.log(globalShortcut.isRegistered('ctrl+Q'))
+
+        console.log(gsc, '~~~~')
+    // 注册快捷键end
+})
+
+
+app.on('will-quit', () => {
+    // console.log('will-quit');
+    // 快捷键注销
+    globalShortcut.unregisterAll()
 })
