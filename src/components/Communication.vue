@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <h2>进程通信</h2>
         <button @click="btn_rtm">渲染进程到主进程===异步操作</button>
         <br/>
         <button @click="btn_rtm_sync">渲染进程到主进程==同步操作</button> 

@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <h2>打开系统通知</h2>
         <button @click="btn_open()">Open Notification</button>
     </div>
 

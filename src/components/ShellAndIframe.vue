@@ -1,6 +1,7 @@
 <template>
 
     <div>
+        <h2>打开目录</h2>
         <button @click="btnClick">Click me</button>
         <button @click="btn_openFolder">打开目录</button>
         <iframe id="myIframe" src="https://www.baidu.com/"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
