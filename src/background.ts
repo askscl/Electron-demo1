@@ -161,9 +161,9 @@ app.whenReady().then(async () => {
             console.log('注册快捷键失败')
         }
 
-        console.log(globalShortcut.isRegistered('ctrl+Q'))
+        // console.log(globalShortcut.isRegistered('ctrl+Q'))
 
-        console.log(gsc, '~~~~')
+        // console.log(gsc, '~~~~')
     // 注册快捷键end
 })
 
